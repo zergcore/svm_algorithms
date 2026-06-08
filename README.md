@@ -62,22 +62,22 @@ A continuación se muestran los comandos explícitos para correr cada modelo:
 
 **Para correr el Modelo Lineal (Hard Margin):**
 ```bash
-python hard_margin/main.py
+python -m hard_margin.main
 ```
 
 **Para correr el Modelo Suavizado (Soft Margin):**
 ```bash
-python soft_margin/main.py
+python -m soft_margin.main
 ```
 
 **Para correr el Modelo de Núcleo (Kernel Trick):**
 ```bash
-python dual_kernel/main.py
+python -m dual_kernel.main
 ```
 
 **Para correr las Estrategias de Multiclasificación:**
 ```bash
-python multiclass_classifier/main.py
+python -m multiclass_classifier.main
 ```
 
-Al ejecutar los scripts, podrás ver los resultados en consola y se generarán o abrirán los gráficos comparativos de las fronteras de decisión y los tiempos del benchmark.
+Al ejecutar los scripts, podrás ver los resultados en la consola (como los vectores de soporte encontrados o los tiempos del benchmark). Además, **todos los resultados visuales y gráficos generados se guardarán automáticamente en la carpeta `assets/`**, agrupados por algoritmo.
