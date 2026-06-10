@@ -183,8 +183,8 @@ def main():
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 7))
     comparator = MulticlassComparator(clf_ova, clf_ovo)
     
-    plot_regions(ax1, comparator, X, y, 'Fronteras de Decisión: One-vs-All (OvA)', method='OVA')
-    plot_regions(ax2, comparator, X, y, 'Fronteras de Decisión: One-vs-One (OvO)', method='OVO')
+    plot_regions(ax1, comparator, X, y, 'Fronteras de Decisión: One-vs-All (OvA)', method='OVA', elapsed_ms=t_ova)
+    plot_regions(ax2, comparator, X, y, 'Fronteras de Decisión: One-vs-One (OvO)', method='OVO', elapsed_ms=t_ovo)
     
     fig.tight_layout()
     save_path = os.path.join(assets_dir, 'benchmark_multiclase.png')

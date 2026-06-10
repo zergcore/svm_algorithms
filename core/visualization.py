@@ -223,7 +223,7 @@ def plot_kernel_results(
     plt.close()
 
 
-def plot_regions(ax: Any, classifier: Any, X: NDArray[np.float64], y: NDArray[np.int8], title: str, method: str = 'OVA') -> None:
+def plot_regions(ax: Any, classifier: Any, X: NDArray[np.float64], y: NDArray[np.int8], title: str, method: str = 'OVA', elapsed_ms: float | None = None) -> None:
     x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
     y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
     xx, yy = np.meshgrid(np.linspace(x_min, x_max, 250),
@@ -256,3 +256,14 @@ def plot_regions(ax: Any, classifier: Any, X: NDArray[np.float64], y: NDArray[np
     ax.set_ylabel('Característica $x_2$', fontsize=11)
     ax.legend(loc='upper right', fontsize=9, framealpha=0.9, edgecolor='gray')
     ax.grid(True, alpha=0.3, linestyle='--')
+
+    # Anotar tiempo de entrenamiento si fue proporcionado
+    if elapsed_ms is not None:
+        n_models = 4 if method == 'OVA' else 6
+        time_text = f'Modelos: {n_models}\nTiempo: {elapsed_ms:.2f} ms'
+        ax.text(
+            0.02, 0.02, time_text, transform=ax.transAxes, fontsize=9,
+            verticalalignment='bottom', fontfamily='monospace',
+            bbox=dict(boxstyle='round,pad=0.4', facecolor='white', edgecolor='gray', alpha=0.9),
+            zorder=5,
+        )
